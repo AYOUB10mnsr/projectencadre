@@ -20,7 +20,7 @@ This C project is a Car Rental Management System that allows users to add, delet
    - Navigate through the menu to manage car data.
 
 ## File Structure
-Data is stored in and retrieved from `voitures.txt`, ensuring persistence across sessions.
+Data is stored in and retrieved from `voitures.csv`, ensuring persistence across sessions.
 
 ## Note
 This system is designed for educational purposes, demonstrating basic C programming concepts such as structures, file handling, and dynamic memory management.
