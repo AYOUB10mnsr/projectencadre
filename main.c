@@ -16,21 +16,28 @@ typedef struct Voiture {
     char transmission[20];
 } voiture;
 
-// ~~~~~~~Fonction pour afficher le menu du programme~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~Fonction pour afficher le menu du programme~~~~~~~~~~~~~~~~~~~~~~
 void menu(void) {
-    printf("******************\n");
-    printf("entrez votre choix\n");
-    printf("1- ajouter une voiture\n");
-    printf("2- supprimer une voiture\n");
-    printf("3- modifier une voiture\n");
-    printf("4- afficher la liste des voitures\n");
-    printf("5- rechercher une voiture par indice\n");
-    printf("6- trier les voitures\n");
-    printf("0- quitter le programme\n");
-    printf("******************\n");
+         printf("╔════════════════════════════╗\n");
+         printf("║    GESTION DES VOITURES    ║\n");
+         printf("╚════════════════════════════╝\n");
+    printf("**************************************************\n");
+         printf("╭──────────────────────────────────╮\n");
+         printf("│          Menu Principal          │\n");
+         printf("╰──────────────────────────────────╯\n");
+         printf("entrez votre choix\n");
+         printf("1- ➕ Ajouter une voiture\n");
+         printf("2- ➖ Supprimer une voiture\n");
+         printf("3- ✏ Modifier une voiture\n");
+         printf("4- 📋 Afficher la liste des voitures\n");
+         printf("5- 🔍 Rechercher une voiture par indice\n");
+         printf("6- 🔀 Trier les voitures\n");
+         printf("0- ❌ Quitter le programme\n");
+
+     printf("**************************************************\n");
 }
 
-// ~~~~~~~Fonction pour ajouter une voiture~~~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~Fonction pour ajouter une voiture~~~~~~~~~~~~~~~~~~~~~~~~
 void ajouter(voiture *voit, int n) {
     FILE *fichier = fopen("voitures.csv", "a"); // Ouvrir le fichier en mode ajout
 
@@ -84,9 +91,9 @@ void ajouter(voiture *voit, int n) {
 
     fclose(fichier); // Fermer le fichier
 }
-// ~~~~~~~~ fin de Fonction pour ajouter une voiture~~~~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~ fin de Fonction pour ajouter une voiture~~~~~~~~~~~~~~~~~~~~~~~~
 
-// ~~~~~~~Fonction pour afficher la liste des voitures~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~Fonction pour afficher la liste des voitures~~~~~~~~~~~~~~~~~~~~~~
 void afficherListe(voiture *voit, int n) {
     printf("Liste des voitures :\n");
     for (int i = 0; i < n; i++) {
@@ -105,9 +112,9 @@ void afficherListe(voiture *voit, int n) {
         printf("\n");
     }
 }
-// ~~~~~~~fin de Fonction pour afficher la liste des voitures~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~fin de Fonction pour afficher la liste des voitures~~~~~~~~~~~~~~~~~~~~~~
 
-// ~~~~~~~Fonction pour supprimer une voiture~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~Fonction pour supprimer une voiture~~~~~~~~~~~~~~~~~~~~~~
 void supprimer(voiture *voit, int *n, int indice) {
     if (indice < 0 || indice >= *n) {
         printf("Indice invalide.\n");
@@ -121,9 +128,9 @@ void supprimer(voiture *voit, int *n, int indice) {
 
     (*n)--;
 }
-// ~~~~~~~~ fin de Fonction pour supprimer une voiture~~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~ fin de Fonction pour supprimer une voiture~~~~~~~~~~~~~~~~~~~~~~
 
-//~~~~~~~~ Fonction pour modifier les informations d'une voiture~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~ Fonction pour modifier les informations d'une voiture~~~~~~~~~~~~~~~~~~~~~~
 void modifier(voiture *voit, int n, int indice) {
     if (indice < 0 || indice >= n) {
         printf("Indice invalide.\n");
@@ -161,12 +168,15 @@ void modifier(voiture *voit, int n, int indice) {
     printf("Entrez la nouvelle transmission : ");
     scanf("%s", voit[indice].transmission);
 }
-//~~~~~~~fin de Fonction pour modifier les informations d'une voiture~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~fin de Fonction pour modifier les informations d'une voiture~~~~~~~~~~~~~~~~~~~~~~
 
-// ~~~~~~~Fonction pour rechercher une voiture par son indice~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~Fonction pour rechercher une voiture par son indice~~~~~~~~~~~~~~~~~~~~~~
 void rechercherParIndice(voiture *voit, int n, int indice) {
     if (indice < 0 || indice >= n) {
-        printf("Indice invalide.\n");
+       printf("╔═══════════════════════════════════════════╗\n");
+       printf("║        Erreur : Voiture non trouvée       ║\n");
+       printf("╚═══════════════════════════════════════════╝\n");
+
         return;
     }
 
@@ -183,8 +193,8 @@ void rechercherParIndice(voiture *voit, int n, int indice) {
     printf("Nom de l'utilisateur : %s\n", voit[indice].nomdutilisateur);
     printf("Transmission : %s\n", voit[indice].transmission);
 }
-// ~~~~~~~fin de Fonction pour rechercher une voiture par son indice~~~~~~~
-// ~~~~~~~Fonction pour rechercher des voitures par marque et disponibilité~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~fin de Fonction pour rechercher une voiture par son indice~~~~~~~~~~~~~~~~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~Fonction pour rechercher des voitures par marque et disponibilité~~~~~~~~~~~~~~~~~~~~~~
 void rechercherParMarqueDisponibilite(voiture *voit, int n, char marqueRecherchee[], char disponibiliteRecherchee[]) {
     printf("Voitures correspondantes :\n");
     for (int i = 0; i < n; i++) {
@@ -205,9 +215,9 @@ void rechercherParMarqueDisponibilite(voiture *voit, int n, char marqueRecherche
         }
     }
 }
-// ~~~~~~~fin de Fonction pour rechercher des voitures par marque et disponibilité~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~fin de Fonction pour rechercher des voitures par marque et disponibilité~~~~~~~~~~~~~~~~~~~~~~
 
-//~~~~~~~~ Fonction pour trier les voitures par marque puis par prix de location~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~ Fonction pour trier les voitures par marque puis par prix de location~~~~~~~~~~~~~~~~~~~~~~
 void trierParMarquePrixLocation(voiture *voit, int n) {
     for (int i = 0; i < n - 1; i++) {
         for (int j = 0; j < n - i - 1; j++) {
@@ -228,11 +238,15 @@ void trierParMarquePrixLocation(voiture *voit, int n) {
         }
     }
 }
-//~~~~~~~fin de Fonction pour trier les voitures par marque puis par prix de location~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~fin de Fonction pour trier les voitures par marque puis par prix de location~~~~~~~~~~~~~~~~~~~~~~
 int main() {
     int choix, N;
     voiture *voitures = malloc(sizeof(voiture) * 100); // Allouer de la mémoire pour le tableau de voitures
-
+    printf("  W   W  EEEEE  L      CCCC  OOO  M   M  EEEEE\n");
+    printf("  W   W  E      L     C     O   O MM MM  E    \n");
+    printf("  W W W  EEE    L     C     O   O M M M  EEE  \n");
+    printf("  W W W  E      L     C     O   O M   M  E    \n");
+    printf("   W W   EEEEE  LLLLL  CCCC  OOO  M   M  EEEEE\n");
     menu(); // Afficher le menu du programme
     printf("Donnez votre choix : ");
     scanf("%d", &choix);
