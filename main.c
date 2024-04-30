@@ -241,12 +241,16 @@ void trierParMarquePrixLocation(voiture *voit, int n) {
 //~~~~~~~~~~~~~~~~~~~~~~fin de Fonction pour trier les voitures par marque puis par prix de location~~~~~~~~~~~~~~~~~~~~~~
 int main() {
     int choix, N;
+    char nomUtilisateur[50];
     voiture *voitures = malloc(sizeof(voiture) * 100); // Allouer de la mémoire pour le tableau de voitures
     printf("  W   W  EEEEE  L      CCCC  OOO  M   M  EEEEE\n");
     printf("  W   W  E      L     C     O   O MM MM  E    \n");
     printf("  W W W  EEE    L     C     O   O M M M  EEE  \n");
     printf("  W W W  E      L     C     O   O M   M  E    \n");
     printf("   W W   EEEEE  LLLLL  CCCC  OOO  M   M  EEEEE\n");
+     printf("Bienvenue dans l'application de gestion des voitures.\n");
+    printf("Veuillez saisir votre nom : ");
+    scanf("%s", nomUtilisateur);
     menu(); // Afficher le menu du programme
     printf("Donnez votre choix : ");
     scanf("%d", &choix);
